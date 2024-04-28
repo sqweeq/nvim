@@ -1,11 +1,11 @@
 return {
   {
     "rcarriga/nvim-notify",
-    opts = {
-      level = 3,
-      render = "minimal",
-      stages = "static",
-    },
+    -- opts = {
+    --   level = 3,
+    --   render = "minimal",
+    --   stages = "static",
+    -- },
     enabled = false,
   },
   {
