@@ -9,4 +9,6 @@ end
 
 map("x", "p", "P")
 
-vim.opt.list = false
+local opt = vim.opt
+opt.list = false
+opt.conceallevel = 0
