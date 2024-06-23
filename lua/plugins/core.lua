@@ -39,4 +39,26 @@ return {
       },
     },
   },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ruff_lsp = {
+          mason = true,
+        },
+        ruff = {
+          mason = true,
+        },
+        lua_language_server = {
+          mason = true,
+        },
+        shfmt = {
+          mason = true,
+        },
+        stylua = {
+          mason = true,
+        },
+      },
+    },
+  },
 }
