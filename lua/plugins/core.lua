@@ -18,6 +18,8 @@ return {
       filesystem = {
         filtered_items = {
           visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
         },
       },
       -- window = {
@@ -57,25 +59,49 @@ return {
     },
   },
   {
-    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
     opts = {
-      servers = {
-        ruff_lsp = {
-          mason = true,
-        },
-        ruff = {
-          mason = true,
-        },
-        lua_language_server = {
-          mason = true,
-        },
-        shfmt = {
-          mason = true,
-        },
-        stylua = {
-          mason = true,
-        },
+      ensure_installed = {
+        -- "stylua",
+        -- "ruff_lsp",
+        "ruff",
+        -- "lua_language_server",
+        -- "shfmt",
+        -- "shellcheck",
+        -- "shfmt",
+        -- "flake8",
       },
     },
   },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   -- dependencies = {
+  --   --   "mason.nvim",
+  --   --   { "williamboman/mason-lspconfig.nvim", config = function() end },
+  --   -- },
+  --   opts = {
+  --     servers = {
+  --       ruff_lsp = {
+  --         mason = true,
+  --         -- enabled = true,
+  --       },
+  --       ruff = {
+  --         mason = true,
+  --         -- enabled = true,
+  --       },
+  --       lua_language_server = {
+  --         mason = true,
+  --         -- enabled = true,
+  --       },
+  --       shfmt = {
+  --         mason = true,
+  --         -- enabled = true,
+  --       },
+  --       stylua = {
+  --         mason = true,
+  --         -- enabled = true,
+  --       },
+  --     },
+  --   },
+  -- },
 }
