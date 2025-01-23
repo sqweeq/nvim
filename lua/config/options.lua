@@ -12,3 +12,5 @@ map("x", "p", "P")
 local opt = vim.opt
 opt.list = false
 opt.conceallevel = 0
+-- then you need to set the option below.
+vim.g.lazyvim_picker = "telescope"
