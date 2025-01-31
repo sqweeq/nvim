@@ -14,5 +14,6 @@ opt.list = false
 opt.conceallevel = 0
 -- then you need to set the option below.
 vim.g.lazyvim_picker = "telescope"
-
+--- Disable the inlay hints (additional information about types and parameters names) because it clutters my view
+-- vim.g.lazyvim_no_inlay_hints = true
 vim.g.snacks_animate = false
