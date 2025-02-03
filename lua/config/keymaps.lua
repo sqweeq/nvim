@@ -3,3 +3,5 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("i", "<C-j>", "<ESC>", { remap = true })
+vim.keymap.set("n", "<C-j>", "<ESC>", { remap = true })
+vim.keymap.set("v", "<C-j>", "<ESC>", { remap = true })
