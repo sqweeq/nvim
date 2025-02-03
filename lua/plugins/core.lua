@@ -2,7 +2,6 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "catppuccin",
       news = {
         -- When enabled, NEWS.md will be shown when changed.
         -- This only contains big new features and breaking changes.
@@ -22,32 +21,10 @@ return {
           hide_gitignored = false,
         },
       },
-      -- window = {
-      --   mappings = {
-      --     ["P"] = { "toggle_preview", config = { use_float = true } },
-      --   },
-      -- },
-      -- event_handlers = {
-      --   {
-      --     event = "after_render",
-      --     handler = function()
-      --       local state = require("neo-tree.sources.manager").get_state("filesystem")
-      --       if not require("neo-tree.sources.common.preview").is_active() then
-      --         state.config = { use_float = false } -- or whatever your config is
-      --         state.commands.toggle_preview(state)
-      --       end
-      --     end,
-      --   },
-      -- },
     },
   },
   {
     "rcarriga/nvim-notify",
-    -- opts = {
-    --   level = 3,
-    --   render = "minimal",
-    --   stages = "static",
-    -- },
     enabled = true,
   },
   {
@@ -67,32 +44,17 @@ return {
   --   },
   -- },
   -- {
-  --   "williamboman/mason.nvim",
-  --   opts = {
-  --     ensure_installed = {
-  -- "stylua",
-  -- "ruff-lsp",
-  -- "ruff",
-  -- "lua_language_server",
-  -- "shfmt",
-  -- "shellcheck",
-  -- "shfmt",
-  -- "flake8",
-  --     },
+  --   "neovim/nvim-lspconfig",
+  --   dependencies = {
+  --     "mason.nvim",
+  --     { "williamboman/mason-lspconfig.nvim", config = function() end },
   --   },
-  -- },
-  -- {
-  -- "neovim/nvim-lspconfig",
-  -- dependencies = {
-  --   "mason.nvim",
-  --   { "williamboman/mason-lspconfig.nvim", config = function() end },
-  -- },
-  -- opts = {
-  --   servers = {
-  -- pyright = {
-  --   mason = false,
-  --   enabled = false,
-  -- },
+  --   opts = {
+  --     servers = {
+  --       pyright = {
+  --         mason = false,
+  --         enabled = false,
+  --       },
   -- black = {
   --   mason = false,
   --   enabled = false,
