@@ -35,21 +35,21 @@ return {
       },
     },
   },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "ruff-lsp",
-        "ruff",
-        "lua_language_server",
-        "shfmt",
-        "shellcheck",
-        "shfmt",
-        "flake8",
-      },
-    },
-  },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   opts = {
+  --     ensure_installed = {
+  --       "stylua",
+  --       -- "ruff-lsp",
+  --       "ruff",
+  --       "lua_language_server",
+  --       "shfmt",
+  --       "shellcheck",
+  --       "shfmt",
+  --       "flake8",
+  --     },
+  --   },
+  -- },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
