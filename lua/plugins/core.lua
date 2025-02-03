@@ -25,61 +25,71 @@ return {
   },
   {
     "rcarriga/nvim-notify",
-    enabled = true,
+    enabled = false,
   },
   {
     "folke/noice.nvim",
     opts = {
       notify = {
-        enabled = true,
+        enabled = false,
       },
     },
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     inlay_hints = {
-  --       enabled = true,
-  --     },
-  --   },
-  -- },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   dependencies = {
-  --     "mason.nvim",
-  --     { "williamboman/mason-lspconfig.nvim", config = function() end },
-  --   },
-  --   opts = {
-  --     servers = {
-  --       pyright = {
-  --         mason = false,
-  --         enabled = false,
-  --       },
-  -- black = {
-  --   mason = false,
-  --   enabled = false,
-  -- },
-  -- ruff_lsp = {
-  --   mason = true,
-  --   enabled = true,
-  -- },
-  -- ruff = {
-  --   mason = true,
-  --   enabled = true,
-  -- },
-  -- lua_language_server = {
-  --   mason = true,
-  --   -- enabled = true,
-  -- },
-  -- shfmt = {
-  --   mason = true,
-  --   -- enabled = true,
-  -- },
-  -- stylua = {
-  --   mason = true,
-  --   -- enabled = true,
-  -- },
-  --     },
-  --   },
-  -- },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "ruff-lsp",
+        "ruff",
+        "lua_language_server",
+        "shfmt",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "mason.nvim",
+      { "williamboman/mason-lspconfig.nvim", config = function() end },
+    },
+    opts = {
+      inlay_hints = {
+        enabled = true,
+      },
+      servers = {
+        -- pyright = {
+        --   mason = false,
+        --   enabled = false,
+        -- },
+        -- black = {
+        --   mason = false,
+        --   enabled = false,
+        -- },
+        -- ruff_lsp = {
+        --   mason = true,
+        --   enabled = true,
+        -- },
+        -- ruff = {
+        --   mason = true,
+        --   enabled = true,
+        -- },
+        -- lua_language_server = {
+        --   mason = true,
+        --   -- enabled = true,
+        -- },
+        -- shfmt = {
+        --   mason = true,
+        --   -- enabled = true,
+        -- },
+        -- stylua = {
+        --   mason = true,
+        --   -- enabled = true,
+        -- },
+      },
+    },
+  },
 }
