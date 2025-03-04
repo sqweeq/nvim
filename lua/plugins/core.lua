@@ -31,11 +31,11 @@ return {
     "rcarriga/nvim-notify",
     enabled = false,
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    -- enabled = false,
-    -- lazy = false,
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   -- enabled = false,
+  --   -- lazy = false,
+  -- },
   -- {
   --   "nvim-treesitter/nvim-treesitter",
   --   -- lazy = false,
@@ -48,31 +48,16 @@ return {
       },
     },
   },
-  -- {
-  --   "williamboman/mason.nvim",
-  --   opts = {
-  --     ensure_installed = {
-  --       "stylua",
-  --       -- "ruff-lsp",
-  --       "ruff",
-  --       "lua_language_server",
-  --       "shfmt",
-  --       "shellcheck",
-  --       "shfmt",
-  --       "flake8",
-  --     },
-  --   },
-  -- },
   {
     "neovim/nvim-lspconfig",
-    -- lazy = false,
+    -- lazy = true,
     dependencies = {
       "mason.nvim",
-      { "williamboman/mason-lspconfig.nvim", config = function() end },
+      { "williamboman/mason-lspconfig.nvim" },
     },
     opts = {
       inlay_hints = {
-        -- enabled = true,
+        enabled = true,
       },
       servers = {
         -- pyright = {
