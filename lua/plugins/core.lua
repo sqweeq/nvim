@@ -13,6 +13,7 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
     opts = {
       filesystem = {
         filtered_items = {
@@ -55,13 +56,14 @@ return {
   -- },
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
     dependencies = {
       "mason.nvim",
       { "williamboman/mason-lspconfig.nvim", config = function() end },
     },
     opts = {
       inlay_hints = {
-        enabled = true,
+        -- enabled = true,
       },
       servers = {
         -- pyright = {
