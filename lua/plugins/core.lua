@@ -32,6 +32,15 @@ return {
     enabled = false,
   },
   {
+    "nvim-lualine/lualine.nvim",
+    -- enabled = false,
+    -- lazy = false,
+  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   -- lazy = false,
+  -- },
+  {
     "folke/noice.nvim",
     opts = {
       notify = {
@@ -56,7 +65,7 @@ return {
   -- },
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
+    -- lazy = false,
     dependencies = {
       "mason.nvim",
       { "williamboman/mason-lspconfig.nvim", config = function() end },
