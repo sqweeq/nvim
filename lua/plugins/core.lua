@@ -46,12 +46,12 @@ return {
       -- cmdline = {
       --   enabled = false,
       -- },
-      popupmenu = {
-        enabled = false,
-      },
-      messages = {
-        enabled = false, -- enables the Noice messages UI
-      },
+      -- popupmenu = {
+      --   enabled = false,
+      -- },
+      -- messages = {
+      --   enabled = false, -- enables the Noice messages UI
+      -- },
       notify = {
         enabled = false,
       },
@@ -119,7 +119,8 @@ return {
       -- ]]
       local logo = [[lazy]]
 
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
+      -- logo = string.rep("\n", 8) .. logo .. "\n\n"
+      logo = string.rep("\n", 5) .. logo .. "\n\n"
 
       local opts = {
         theme = "doom",
@@ -128,6 +129,7 @@ return {
           -- enabling this messes up the actual laststatus setting after loading a file
           statusline = false,
         },
+        vertical_center = false, -- Center the Dashboard on the vertical (from top to bottom)
         config = {
           header = vim.split(logo, "\n"),
         -- stylua: ignore
