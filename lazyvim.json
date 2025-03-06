@@ -1,7 +1,8 @@
 {
   "extras": [
     "lazyvim.plugins.extras.lang.python",
-    "lazyvim.plugins.extras.lang.toml"
+    "lazyvim.plugins.extras.lang.toml",
+    "lazyvim.plugins.extras.ui.dashboard-nvim"
   ],
   "install_version": 7,
   "news": {

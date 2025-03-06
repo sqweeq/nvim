@@ -17,3 +17,7 @@ vim.g.lazyvim_picker = "telescope"
 --- Disable the inlay hints (additional information about types and parameters names) because it clutters my view
 -- vim.g.lazyvim_no_inlay_hints = true
 vim.g.snacks_animate = false
+-- LazyVim Changelog
+vim.keymap.set("n", "<leader>D", function()
+  vim.cmd("Dashboard")
+end, { desc = "Dashboard" })
