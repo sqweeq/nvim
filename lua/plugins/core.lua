@@ -31,15 +31,6 @@ return {
     "rcarriga/nvim-notify",
     enabled = false,
   },
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   -- enabled = false,
-  --   -- lazy = false,
-  -- },
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   -- lazy = false,
-  -- },
   {
     "folke/noice.nvim",
     opts = {
@@ -64,32 +55,41 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    -- lazy = true,
+    event = "LazyFile",
     dependencies = {
-      "mason.nvim",
-      { "williamboman/mason-lspconfig.nvim" },
+      {
+        "mason.nvim",
+        opts = {
+          ui = {
+            ---@since 1.0.0
+            -- Whether to automatically check for new versions when opening the :Mason window.
+            check_outdated_packages_on_open = false,
+          },
+        },
+      },
+      { "williamboman/mason-lspconfig.nvim", config = function() end, opts = {} },
     },
     opts = {
       inlay_hints = {
         enabled = true,
       },
       servers = {
-        -- pyright = {
-        --   mason = false,
-        --   enabled = false,
-        -- },
+        pyright = {
+          mason = true,
+          enabled = true,
+        },
         -- black = {
         --   mason = false,
         --   enabled = false,
         -- },
-        -- ruff_lsp = {
-        --   mason = true,
-        --   enabled = true,
-        -- },
-        -- ruff = {
-        --   mason = true,
-        --   enabled = true,
-        -- },
+        ruff_lsp = {
+          mason = false,
+          enabled = false,
+        },
+        ruff = {
+          mason = true,
+          enabled = true,
+        },
         -- lua_language_server = {
         --   mason = true,
         --   -- enabled = true,
