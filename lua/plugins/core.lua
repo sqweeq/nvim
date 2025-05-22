@@ -75,8 +75,8 @@ return {
       },
       servers = {
         pyright = {
-          mason = true,
-          enabled = true,
+          mason = false,
+          enabled = false,
         },
         -- black = {
         --   mason = false,
