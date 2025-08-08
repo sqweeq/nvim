@@ -27,6 +27,7 @@ return {
       },
     },
   },
+  { "ibhagwan/smartyank.nvim" },
   {
     "rcarriga/nvim-notify",
     enabled = false,
