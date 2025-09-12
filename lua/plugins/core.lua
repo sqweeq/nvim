@@ -12,6 +12,40 @@ return {
     },
   },
   {
+    'nvim-telescope/telescope.nvim',
+    -- tag = '0.1.8',
+    -- or                              , branch = '0.1.x',
+    -- dependencies = { 'nvim-lua/plenary.nvim' }
+    opts = {
+      pickers = {
+        find_files = {
+          -- Customize the find_command to include --no-ignore-vcs
+          -- find_command = { "rg", "--files", "--hidden", "--no-ignore-vcs" },
+          -- You can also add other options like hidden = true if desired
+          hidden = true,
+          no_ignore = true,
+        },
+      },
+      defaults = {
+        window = {
+          padding = { 0, 0, 0, 0 }, -- No padding, maximizing the window
+          -- ... other window options
+        },
+        initial_mode = "normal",
+        mappings = {
+          n = {
+            ['q'] = 'close',
+            ['l'] = 'select_default',
+          },
+          i = {
+            ['<C-q>'] = 'close',
+            ['<C-j>'] = { "<esc>", type = "command" },
+          },
+        }
+      }
+    },
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     lazy = true,
     opts = {
@@ -133,24 +167,34 @@ return {
         vertical_center = false, -- Center the Dashboard on the vertical (from top to bottom)
         config = {
           header = vim.split(logo, "\n"),
-        -- stylua: ignore
-        center = {
-          { action = function()
-        require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
-      end,                           desc = " Explore Neotree cwd",       icon = "e ", key = "e" },
-          { action = function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-      end,                           desc = " Explore Neotree Root",       icon = "E ", key = "E" },
-          { action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f" },
-          { action = "ene | startinsert",                              desc = " New File",        icon = " ", key = "n" },
-          { action = 'lua LazyVim.pick("oldfiles")()',                 desc = " Recent Files",    icon = " ", key = "r" },
-          { action = 'lua LazyVim.pick("live_grep")()',                desc = " Find Text",       icon = " ", key = "g" },
-          { action = 'lua LazyVim.pick.config_files()()',              desc = " Config",          icon = " ", key = "c" },
-          { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
-          { action = "LazyExtras",                                     desc = " Lazy Extras",     icon = " ", key = "x" },
-          { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
-          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
-        },
+          -- stylua: ignore
+          center = {
+            {
+              action = function()
+                require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
+              end,
+              desc = " Explore Neotree cwd",
+              icon = "e ",
+              key = "e"
+            },
+            {
+              action = function()
+                require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+              end,
+              desc = " Explore Neotree Root",
+              icon = "E ",
+              key = "E"
+            },
+            { action = 'lua LazyVim.pick()()', desc = " Find File", icon = " ", key = "f" },
+            { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
+            { action = 'lua LazyVim.pick("oldfiles")()', desc = " Recent Files", icon = " ", key = "r" },
+            { action = 'lua LazyVim.pick("live_grep")()', desc = " Find Text", icon = " ", key = "g" },
+            { action = 'lua LazyVim.pick.config_files()()', desc = " Config", icon = " ", key = "c" },
+            { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
+            { action = "LazyExtras", desc = " Lazy Extras", icon = " ", key = "x" },
+            { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+            { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit", icon = " ", key = "q" },
+          },
           footer = function()
             local stats = require("lazy").stats()
             local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
