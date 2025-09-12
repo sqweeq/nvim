@@ -27,11 +27,27 @@ return {
         },
       },
       defaults = {
-        window = {
-          padding = { 0, 0, 0, 0 }, -- No padding, maximizing the window
-          -- ... other window options
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",    -- Include hidden files
+          "--no-ignore", -- Disable .gitignore and .ignore files
         },
-        initial_mode = "normal",
+        -- layout_strategy = "horizontal", -- Or "vertical"
+        layout_config = {
+          horizontal = {
+            -- Set width and height as percentage (0-1) or fixed number
+            width = 0.99,  -- 70% of the screen width
+            height = 0.99, -- 80% of the screen height
+            -- prompt_position = "top", -- or "bottom"
+          },
+        },
+        -- initial_mode = "normal",
         mappings = {
           n = {
             ['q'] = 'close',
