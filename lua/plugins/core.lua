@@ -38,6 +38,8 @@ return {
       },
       picker = {
         enabled = true,
+        hidden = true,
+        ignored = true,
         sources = {
           explorer = {
             cycle = true,
@@ -57,12 +59,20 @@ return {
                   border = "rounded",
                   title = "{source} {live} {flags}",
                   title_pos = "center",
-                  { win = "input", height = 1, border = "bottom" },
-                  { win = "list", border = "none" },
+                  { win = "input", height = 1,     border = "bottom" },
+                  { win = "list",  border = "none" },
                 },
                 { win = "preview", border = "rounded", width = 0.7, title = "{preview}" },
               },
             },
+          },
+          files = {
+            hidden = true,
+            ignored = true,
+          },
+          buffers = {
+            hidden = true,
+            ignored = true,
           },
         },
         layout = {
@@ -75,8 +85,8 @@ return {
             border = "none",
             {
               box = "vertical",
-              { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
-              { win = "input", height = 1, border = "rounded", title = "{title} {live} {flags}", title_pos = "center" },
+              { win = "list",  title = " Results ", title_pos = "center", border = "rounded" },
+              { win = "input", height = 1,          border = "rounded",   title = "{title} {live} {flags}", title_pos = "center" },
             },
             {
               win = "preview",
