@@ -3,10 +3,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       news = {
-        -- When enabled, NEWS.md will be shown when changed.
-        -- This only contains big new features and breaking changes.
         lazyvim = false,
-        -- Same but for Neovim's news.txt
         neovim = false,
       },
     },
@@ -61,19 +58,18 @@ return {
             },
           },
         },
-        layout = { -- the layout config
+        layout = {
           preset = "telescope",
-          layout = { -- the layout itself
-            width = 0.99, -- 0 is max
+          layout = {
+            width = 0.99,
             height = 0.99,
           },
         },
         win = {
           input = {
             keys = {
-              -- ["<a-s>"] = { "flash", mode = { "n", "i" } },
-              -- ["s"] = { "flash" },
               ["<C-j>"] = { "cancel", mode = "n" },
+              ["<C-q>"] = { "cancel", mode = "i" },
             },
           },
         },
@@ -83,11 +79,7 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
     keys = {
       {
         "<leader>?",
@@ -130,15 +122,6 @@ return {
   {
     "folke/noice.nvim",
     opts = {
-      -- cmdline = {
-      --   enabled = false,
-      -- },
-      -- popupmenu = {
-      --   enabled = false,
-      -- },
-      -- messages = {
-      --   enabled = false, -- enables the Noice messages UI
-      -- },
       notify = {
         enabled = false,
       },
@@ -157,8 +140,6 @@ return {
         "mason.nvim",
         opts = {
           ui = {
-            ---@since 1.0.0
-            -- Whether to automatically check for new versions when opening the :Mason window.
             check_outdated_packages_on_open = false,
           },
         },
@@ -174,10 +155,6 @@ return {
           mason = false,
           enabled = false,
         },
-        -- black = {
-        --   mason = false,
-        --   enabled = false,
-        -- },
         ruff_lsp = {
           mason = false,
           enabled = false,
@@ -186,18 +163,6 @@ return {
           mason = true,
           enabled = true,
         },
-        -- lua_language_server = {
-        --   mason = true,
-        --   -- enabled = true,
-        -- },
-        -- shfmt = {
-        --   mason = true,
-        --   -- enabled = true,
-        -- },
-        -- stylua = {
-        --   mason = true,
-        --   -- enabled = true,
-        -- },
       },
     },
   },
