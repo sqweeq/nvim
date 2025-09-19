@@ -11,111 +11,103 @@ return {
       },
     },
   },
-
-  -- {
-  --   "folke/lazydev.nvim",
-  --   ft = "lua", -- only load on lua files
-  --   opts = {
-  --     library = {
-  --       -- See the configuration section for more details
-  --       -- Load luvit types when the `vim.uv` word is found
-  --       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-  --     },
-  --   },
-  -- },
-  -- { -- optional cmp completion source for require statements and module annotations
-  --   "hrsh7th/nvim-cmp",
-  --   opts = function(_, opts)
-  --     opts.sources = opts.sources or {}
-  --     table.insert(opts.sources, {
-  --       name = "lazydev",
-  --       group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-  --     })
-  --   end,
-  -- },
-  -- { -- optional blink completion source for require statements and module annotations
-  --   "saghen/blink.cmp",
-  --   opts = {
-  --     sources = {
-  --       -- add lazydev to your completion providers
-  --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-  --       providers = {
-  --         lazydev = {
-  --           name = "LazyDev",
-  --           module = "lazydev.integrations.blink",
-  --           -- make lazydev completions top priority (see `:h blink.cmp`)
-  --           score_offset = 100,
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
-  -- { "folke/neodev.nvim", enabled = false }, -- make sure to uninstall or disable neodev.nvim
-
   {
     "folke/snacks.nvim",
-    ---@type snacks.Config
     opts = {
-      animate = {
-        -- enabled = true,
-        -- your animate configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
+      explorer = { enabled = true, replace_netrw = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          keys = {
+            { icon = "E", key = "e", desc = "Explore", action = ":lua Snacks.explorer()" },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+      },
+      picker = {
+        sources = {
+          explorer = {
+            cycle = true,
+            auto_close = true,
+            layout = {
+
+              { preview = true },
+              layout = {
+                box = "horizontal",
+                width = 0.99,
+                height = 0.99,
+                {
+                  box = "vertical",
+                  border = "rounded",
+                  title = "{source} {live} {flags}",
+                  title_pos = "center",
+                  { win = "input", height = 1, border = "bottom" },
+                  { win = "list", border = "none" },
+                },
+                { win = "preview", border = "rounded", width = 0.7, title = "{preview}" },
+              },
+            },
+          },
+        },
+        layout = { -- the layout config
+          preset = "telescope",
+          layout = { -- the layout itself
+            width = 0.99, -- 0 is max
+            height = 0.99,
+          },
+        },
+        win = {
+          input = {
+            keys = {
+              -- ["<a-s>"] = { "flash", mode = { "n", "i" } },
+              -- ["s"] = { "flash" },
+              ["<C-j>"] = { "cancel", mode = "n" },
+            },
+          },
+        },
       },
     },
   },
   {
-    "nvim-telescope/telescope.nvim",
-    -- tag = '0.1.8',
-    -- or                              , branch = '0.1.x',
-    -- dependencies = { 'nvim-lua/plenary.nvim' }
+    "folke/which-key.nvim",
+    event = "VeryLazy",
     opts = {
-      pickers = {
-        find_files = {
-          -- Customize the find_command to include --no-ignore-vcs
-          -- find_command = { "rg", "--files", "--hidden", "--no-ignore-vcs" },
-          -- You can also add other options like hidden = true if desired
-          hidden = true,
-          no_ignore = true,
-        },
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
       },
-      defaults = {
-        vimgrep_arguments = {
-          "rg",
-          "--color=never",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-          "--hidden", -- Include hidden files
-          "--no-ignore", -- Disable .gitignore and .ignore files
-        },
-        -- layout_strategy = "horizontal", -- Or "vertical"
-        layout_config = {
-          horizontal = {
-            -- Set width and height as percentage (0-1) or fixed number
-            width = 0.99, -- 70% of the screen width
-            height = 0.99, -- 80% of the screen height
-            -- prompt_position = "top", -- or "bottom"
-          },
-        },
-        -- initial_mode = "normal",
-        mappings = {
-          n = {
-            ["q"] = "close",
-            ["l"] = "select_default",
-          },
-          i = {
-            ["<C-q>"] = "close",
-            ["<C-j>"] = { "<esc>", type = "command" },
-          },
-        },
+      {
+        "<leader>e",
+        function()
+          Snacks.explorer()
+        end,
+        desc = "Explore",
       },
     },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
     lazy = true,
     opts = {
       filesystem = {
@@ -171,7 +163,7 @@ return {
           },
         },
       },
-      { "williamboman/mason-lspconfig.nvim", config = function() end, opts = {} },
+      { "mason-org/mason-lspconfig.nvim", config = function() end, opts = {} },
     },
     opts = {
       inlay_hints = {
@@ -208,89 +200,5 @@ return {
         -- },
       },
     },
-  },
-  {
-    "nvimdev/dashboard-nvim",
-    lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
-    opts = function()
-      -- local logo = [[
-      --      ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
-      --      ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z
-      --      ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z
-      --      ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z
-      --      ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
-      --      ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
-      -- ]]
-      local logo = [[lazy]]
-
-      -- logo = string.rep("\n", 8) .. logo .. "\n\n"
-      logo = string.rep("\n", 5) .. logo .. "\n\n"
-
-      local opts = {
-        theme = "doom",
-        hide = {
-          -- this is taken care of by lualine
-          -- enabling this messes up the actual laststatus setting after loading a file
-          statusline = false,
-        },
-        vertical_center = false, -- Center the Dashboard on the vertical (from top to bottom)
-        config = {
-          header = vim.split(logo, "\n"),
-          -- stylua: ignore
-          center = {
-            {
-              action = function()
-                require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
-              end,
-              desc = " Explore Neotree cwd",
-              icon = "e ",
-              key = "e"
-            },
-            {
-              action = function()
-                require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-              end,
-              desc = " Explore Neotree Root",
-              icon = "E ",
-              key = "E"
-            },
-            { action = 'lua LazyVim.pick()()', desc = " Find File", icon = " ", key = "f" },
-            { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
-            { action = 'lua LazyVim.pick("oldfiles")()', desc = " Recent Files", icon = " ", key = "r" },
-            { action = 'lua LazyVim.pick("live_grep")()', desc = " Find Text", icon = " ", key = "g" },
-            { action = 'lua LazyVim.pick.config_files()()', desc = " Config", icon = " ", key = "c" },
-            { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
-            { action = "LazyExtras", desc = " Lazy Extras", icon = " ", key = "x" },
-            { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
-            { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit", icon = " ", key = "q" },
-          },
-          footer = function()
-            local stats = require("lazy").stats()
-            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
-          end,
-        },
-      }
-
-      for _, button in ipairs(opts.config.center) do
-        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-        button.key_format = "  %s"
-      end
-
-      -- open dashboard after closing lazy
-      if vim.o.filetype == "lazy" then
-        vim.api.nvim_create_autocmd("WinClosed", {
-          pattern = tostring(vim.api.nvim_get_current_win()),
-          once = true,
-          callback = function()
-            vim.schedule(function()
-              vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
-            end)
-          end,
-        })
-      end
-
-      return opts
-    end,
   },
 }
