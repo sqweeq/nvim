@@ -42,6 +42,8 @@ return {
         ignored = true,
         sources = {
           explorer = {
+            hidden = true,
+            ignored = true,
             cycle = true,
             auto_close = true,
             -- matcher = {
@@ -74,6 +76,9 @@ return {
             hidden = true,
             ignored = true,
           },
+          grep = { ignored = true, hidden = true },
+          grep_word = { ignored = true, hidden = true },
+          grep_buffers = { ignored = true, hidden = true },
         },
         layout = {
           reverse = true,
