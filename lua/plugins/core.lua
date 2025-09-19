@@ -11,8 +11,61 @@ return {
       },
     },
   },
+
+  -- {
+  --   "folke/lazydev.nvim",
+  --   ft = "lua", -- only load on lua files
+  --   opts = {
+  --     library = {
+  --       -- See the configuration section for more details
+  --       -- Load luvit types when the `vim.uv` word is found
+  --       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+  --     },
+  --   },
+  -- },
+  -- { -- optional cmp completion source for require statements and module annotations
+  --   "hrsh7th/nvim-cmp",
+  --   opts = function(_, opts)
+  --     opts.sources = opts.sources or {}
+  --     table.insert(opts.sources, {
+  --       name = "lazydev",
+  --       group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+  --     })
+  --   end,
+  -- },
+  -- { -- optional blink completion source for require statements and module annotations
+  --   "saghen/blink.cmp",
+  --   opts = {
+  --     sources = {
+  --       -- add lazydev to your completion providers
+  --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+  --       providers = {
+  --         lazydev = {
+  --           name = "LazyDev",
+  --           module = "lazydev.integrations.blink",
+  --           -- make lazydev completions top priority (see `:h blink.cmp`)
+  --           score_offset = 100,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
+  -- { "folke/neodev.nvim", enabled = false }, -- make sure to uninstall or disable neodev.nvim
+
   {
-    'nvim-telescope/telescope.nvim',
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      animate = {
+        -- enabled = true,
+        -- your animate configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+    },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
     -- tag = '0.1.8',
     -- or                              , branch = '0.1.x',
     -- dependencies = { 'nvim-lua/plenary.nvim' }
@@ -35,14 +88,14 @@ return {
           "--line-number",
           "--column",
           "--smart-case",
-          "--hidden",    -- Include hidden files
+          "--hidden", -- Include hidden files
           "--no-ignore", -- Disable .gitignore and .ignore files
         },
         -- layout_strategy = "horizontal", -- Or "vertical"
         layout_config = {
           horizontal = {
             -- Set width and height as percentage (0-1) or fixed number
-            width = 0.99,  -- 70% of the screen width
+            width = 0.99, -- 70% of the screen width
             height = 0.99, -- 80% of the screen height
             -- prompt_position = "top", -- or "bottom"
           },
@@ -50,15 +103,15 @@ return {
         -- initial_mode = "normal",
         mappings = {
           n = {
-            ['q'] = 'close',
-            ['l'] = 'select_default',
+            ["q"] = "close",
+            ["l"] = "select_default",
           },
           i = {
-            ['<C-q>'] = 'close',
-            ['<C-j>'] = { "<esc>", type = "command" },
+            ["<C-q>"] = "close",
+            ["<C-j>"] = { "<esc>", type = "command" },
           },
-        }
-      }
+        },
+      },
     },
   },
   {
