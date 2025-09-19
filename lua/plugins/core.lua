@@ -11,7 +11,10 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-      explorer = { enabled = true, replace_netrw = true },
+      explorer = {
+        enabled = true,
+        replace_netrw = true,
+      },
       dashboard = {
         enabled = true,
         preset = {
@@ -39,8 +42,11 @@ return {
           explorer = {
             cycle = true,
             auto_close = true,
+            -- matcher = {
+            --   sort_empty = true,
+            --   fuzzy = true,
+            -- },
             layout = {
-
               { preview = true },
               layout = {
                 box = "horizontal",
