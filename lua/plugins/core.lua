@@ -9,6 +9,16 @@ return {
     },
   },
   {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+  {
     "folke/snacks.nvim",
     opts = {
       explorer = {
@@ -61,8 +71,8 @@ return {
                   border = "rounded",
                   title = "{source} {live} {flags}",
                   title_pos = "center",
-                  { win = "input", height = 1,     border = "bottom" },
-                  { win = "list",  border = "none" },
+                  { win = "input", height = 1, border = "bottom" },
+                  { win = "list", border = "none" },
                 },
                 { win = "preview", border = "rounded", width = 0.7, title = "{preview}" },
               },
@@ -90,8 +100,14 @@ return {
             border = "none",
             {
               box = "vertical",
-              { win = "list",  title = " Results ", title_pos = "center", border = "rounded" },
-              { win = "input", height = 1,          border = "rounded",   title = "{title} {live} {flags}", title_pos = "center" },
+              { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
+              {
+                win = "input",
+                height = 1,
+                border = "rounded",
+                title = "{title} {live} {flags}",
+                title_pos = "center",
+              },
             },
             {
               win = "preview",
