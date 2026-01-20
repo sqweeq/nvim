@@ -148,7 +148,15 @@ return {
         end,
         desc = "Explore",
       },
+      -- vim.keymap.set("n", "dj", "<NOP>", { desc = "example fix" })
+      -- vim.keymap.set("n", "dk", "<NOP>", { desc = "example fix" })
+      -- { mode = { "n" }, { "dj", "<NOP>", desc = "example fix" } },
+      -- { "dj", "<NOP>", desc = "example fix" },
+      -- { "d", mode = { "n", "v" }, desc = "Search", remap = {} }, -- Or map to a no-op
     },
+    -- triggers = {
+    --   { "d", "<NOP>", desc = "example fix" },
+    -- },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
