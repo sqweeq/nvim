@@ -193,38 +193,38 @@ return {
       },
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    event = "LazyFile",
-    dependencies = {
-      {
-        "mason.nvim",
-        opts = {
-          ui = {
-            check_outdated_packages_on_open = false,
-          },
-        },
-      },
-      { "mason-org/mason-lspconfig.nvim", config = function() end, opts = {} },
-    },
-    opts = {
-      inlay_hints = {
-        enabled = true,
-      },
-      servers = {
-        pyright = {
-          mason = false,
-          enabled = false,
-        },
-        ruff_lsp = {
-          mason = false,
-          enabled = false,
-        },
-        ruff = {
-          mason = true,
-          enabled = true,
-        },
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   event = "LazyFile",
+  --   dependencies = {
+  --     {
+  --       "mason.nvim",
+  --       opts = {
+  --         ui = {
+  --           check_outdated_packages_on_open = false,
+  --         },
+  --       },
+  --     },
+  --     { "mason-org/mason-lspconfig.nvim", config = function() end, opts = {} },
+  --   },
+  --   opts = {
+  --     inlay_hints = {
+  --       enabled = true,
+  --     },
+  --     servers = {
+  --       pyright = {
+  --         mason = false,
+  --         enabled = false,
+  --       },
+  --       ruff_lsp = {
+  --         mason = false,
+  --         enabled = false,
+  --       },
+  --       ruff = {
+  --         mason = true,
+  --         enabled = true,
+  --       },
+  --     },
+  --   },
+  -- },
 }
