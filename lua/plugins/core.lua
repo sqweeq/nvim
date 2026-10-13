@@ -21,6 +21,8 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      indent = { enabled = false }, -- Turn off Snacks indent guides
+      scroll = { enabled = false }, -- Turn off Snacks smooth scrolling animations
       explorer = {
         enabled = true,
         replace_netrw = true,
@@ -176,6 +178,13 @@ return {
     },
   },
   { "ibhagwan/smartyank.nvim" },
+  -- Disable animations that flood the SSH tunnel with packets
+  -- { "echasnovski/mini.indentscope", enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
+
+  -- Disable smooth scrolling animations if you use them
+  { "declancm/cinnamon.nvim", enabled = false },
+
   {
     "rcarriga/nvim-notify",
     enabled = false,
