@@ -21,6 +21,12 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      notifier = {
+        -- This intercepts and hides the warning message
+        filter = function(notif)
+          return not notif.msg:find("lazyredraw")
+        end,
+      },
       -- indent = { enabled = false }, -- Turn off Snacks indent guides
       scroll = { enabled = false }, -- Turn off Snacks smooth scrolling animations
       explorer = {
