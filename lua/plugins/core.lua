@@ -21,7 +21,7 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-      indent = { enabled = false }, -- Turn off Snacks indent guides
+      -- indent = { enabled = false }, -- Turn off Snacks indent guides
       scroll = { enabled = false }, -- Turn off Snacks smooth scrolling animations
       explorer = {
         enabled = true,
