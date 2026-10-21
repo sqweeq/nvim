@@ -18,3 +18,11 @@ vim.opt.clipboard = "" -- CRITICAL: Stops SSH from trying to poll your local sys
 vim.opt.cursorline = false -- Stops redrawing the highlighted bar under your cursor
 -- vim.opt.relativenumber = false  -- Stops recalculating line numbers relative to the cursor on every step
 vim.opt.lazyredraw = true -- Defers screen rendering so it doesn't fight for terminal bandwidth
+
+-- The Safest Blend: Zero disk lag, but protected text
+opt.swapfile = true -- Keep swap files on, but because XDG_STATE is in /tmp,
+-- the swap file is written to RAM (ultra fast, no disk lag!)
+opt.backup = false
+opt.writebackup = false
+opt.undofile = false -- Disabling this stops Neovim from writing undo files to disk
+opt.updatetime = 4000 -- Flush changes to the RAM swapfile every 4 seconds instead of 400ms
