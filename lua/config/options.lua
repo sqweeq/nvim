@@ -26,3 +26,4 @@ opt.backup = false
 opt.writebackup = false
 opt.undofile = false -- Disabling this stops Neovim from writing undo files to disk
 opt.updatetime = 4000 -- Flush changes to the RAM swapfile every 4 seconds instead of 400ms
+opt.confirm = false
