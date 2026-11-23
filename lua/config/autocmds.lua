@@ -5,3 +5,9 @@
 --   pattern = "*",
 --   command = "if mode() != 'c' | checktime | endif",
 -- })
+vim.api.nvim_create_autocmd("FileChangedShell", {
+  pattern = "*",
+  callback = function()
+    vim.v.fcs_choice = ""
+  end,
+})

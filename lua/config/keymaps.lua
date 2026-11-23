@@ -29,3 +29,9 @@ end, { desc = "Dashboard" })
 
 -- leader recent files
 vim.keymap.set("n", "<leader>r", '<cmd>lua LazyVim.pick("oldfiles")()<cr>', { desc = " Recent Files" })
+
+-- Force save with Ctrl+s
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Force Save File" })
+
+-- Redirect :w to :w!
+vim.cmd([[cnoreabbrev <expr> w getcmdtype() == ':' && getcmdline() ==# 'w' ? 'w!' : 'w']])
